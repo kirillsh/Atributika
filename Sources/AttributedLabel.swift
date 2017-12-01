@@ -43,7 +43,7 @@ open class AttributedLabel: UIView {
         get { return label.font }
     }
     
-    public var numberOfLines: Int {
+    @IBInspectable public var numberOfLines: Int {
         set { label.numberOfLines = newValue }
         get { return label.numberOfLines }
     }
@@ -58,17 +58,17 @@ open class AttributedLabel: UIView {
         get { return label.lineBreakMode }
     }
     
-    public var textColor: UIColor {
+    @IBInspectable public var textColor: UIColor {
         set { label.textColor = newValue }
         get { return label.textColor }
     }
     
-    public var shadowColor: UIColor? {
+    @IBInspectable public var shadowColor: UIColor? {
         set { label.shadowColor = newValue }
         get { return label.shadowColor }
     }
     
-    public var shadowOffset: CGSize {
+    @IBInspectable public var shadowOffset: CGSize {
         set { label.shadowOffset = newValue }
         get { return label.shadowOffset }
     }
@@ -85,14 +85,17 @@ open class AttributedLabel: UIView {
     }
     
     private func commonInit() {
+        label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label": label]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label": label]))
     }
     
     //MARK: - overrides
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.frame = bounds
+//        label.frame = bounds
         
         detectionAreaButtons.forEach {
             $0.removeFromSuperview()
