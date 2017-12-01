@@ -8,7 +8,7 @@ import Foundation
     
 import UIKit
 
-public class AttributedLabel: UIView {
+open class AttributedLabel: UIView {
     
     //MARK: - private properties
     private let label = UILabel()
@@ -89,7 +89,7 @@ public class AttributedLabel: UIView {
     }
     
     //MARK: - overrides
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         label.frame = bounds
@@ -131,7 +131,7 @@ public class AttributedLabel: UIView {
         }
     }
     
-    public override func sizeThatFits(_ size: CGSize) -> CGSize {
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
         return label.sizeThatFits(size)
     }
 
